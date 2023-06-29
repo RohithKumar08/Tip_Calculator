@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Tip calculator app</title>
+  <style>
+body{
+    background-color: hsl(185, 41%, 84%);
+    display: flex;
+    height: 96vh;
+    justify-content: center;
+}
+.splitter{
+    font-size: large;
+    display: flexbox;
+    margin-top: 70px;
+    color: hsl(183, 100%, 15%,0.8);
+    position: absolute;
+    letter-spacing: 6px;
+    width: 50px;
+    height: 80px;
+}
+.splitter1{
+    font-size: large;
+    display: flexbox;
+    margin-top: 90px;
+    color: hsl(183, 100%, 15%,0.8);
+    position: absolute;
+    letter-spacing: 6px;
+    width: 50px;
+    height: 80px;
+}
+.container{
+    margin-top: 20px;
+    box-shadow: 2px 2px 30px rgba(0, 0,0, 0.2);
+    padding: 20px;
+    border-radius: 15px;
+    height: 280px;
+    width: 590px;
+    min-width: 590px;
+    background-color: white;
+    align-self:center;
+}
+.leftlayout{
+    vertical-align: top;
+    display: inline-block;
+    width: 260px;
+    padding: 10px;
+    height: 260px;
+}
+.rightlayout{
+    display: inline-block;
+    border: 1px solid gray;
+    color: white;
+    border-radius: 10px;
+    padding: 25px;
+    width: 245px;
+    height: 230px;
+    background-color: hsl(183, 100%, 15%);
+}
+.header{
+    font-size: 12px;
+    opacity: 0.5;
+    margin: 0px;
+}
+.person{
+    opacity: 0.5;
+    font-size: 10px;
+}
+p{
+    margin: 0;
+}
+.percentage{
+    color: white;
+    border: none;
+    background-color: hsl(183, 100%, 15%);
+    border-radius: 3px;
+    font-size: 15px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 76px;
+    cursor: pointer;
+}
+.percentage:hover{
+    background-color: hsl(172, 67%, 45%,0.5);
+    color: hsl(183, 100%, 15%);
+}
+.percentage:target{
+    background-color: hsl(172, 67%, 45%);
+    color: hsl(183, 100%, 15%);
+}
+.custom{
+    font-family: Space Mono;
+    background-color: hsl(189, 41%, 97%);
+    border-radius: 3px;
+    border: 2px solid hsl(189, 41%, 97%);
+    margin-top: 0px;
+    height: 30px;
+    text-align: right;
+    outline: none;
+    font-size: 15px;
+    width: 70px;
+}
+.custom:focus{
+    border:2px solid hsl(172, 67%, 45%);
+}
+.rst{
+    border-radius: 3px;
+    margin-top: 80px;
+    border: none;
+    background-color: hsl(172, 67%, 45%);
+    font-family: Space Mono;
+    color: hsl(183, 100%, 15%);
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
+}
+.rst:hover{
+    background-color: hsl(185, 90%, 85%);
+}
+.set{
+    height: 45px;
+    border: 1px solid rgba(0, 0, 0,0);
+    margin-bottom: 15px;
+}
+.rheader{
+    width: 80px;
+    margin-top: 0px;
+    padding-top: 10px;
+    font-size: 10px;
+}
+.person{
+    width: 60px;
+}
+.amt{
+    float: right;
+    font-size: 30px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    color: hsl(172, 67%, 45%);
+}
+.fullinput{
+    outline: 0px;
+    text-align: right;
+    color: hsl(183, 100%, 15%);
+    font-size: 18px;
+    font-family: Space Mono;
+    background-color: hsla(180, 36%, 79%, 0.221);
+    border: 2px solid hsl(189, 41%, 97%);
+    height: 30px;
+    border-radius: 5px;
+    width: 95%;
+    cursor: pointer;
+}
+.fullinput:focus{
+    border:2px solid hsl(172, 67%, 45%);
+}
+img{
+    width: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+    position: absolute;
+}
+.sh{
+    width: 120px;
+    font-size: 12px;
+    margin-top: 30px;
+}
+#warnings{
+    float: right;
+    position: absolute;
+    margin-left: 162px;
+    color: red;
+    font-size: 12px;
+}
+  </style>
+</head>
+<h1 class="splitter">SPLI</h1>
+  <h1 class="splitter1">TTER</h1>
+  <div class="container">
+    <div class="leftlayout">
+      <p class="header">Bill</p>
+      <div class="fullback">
+        <img src="images/icon-dollar.svg" alt="">
+        <input id="bill" class="fullinput" type="number" placeholder="0">
+      </div>
+      <p class="sh">Select Tip %</p>
+      <div class="btns">
+        <button onclick="selecttip(this,0.05)"class="percentage">5%</button>
+        <button onclick="selecttip(this,0.1)" class="percentage">10%</button>
+        <button onclick="selecttip(this,0.15)" class="percentage">15%</button>
+        <button onclick="selecttip(this,0.25)" class="percentage">25%</button>
+        <button onclick="selecttip(this,0.5)" class="percentage">50%</button>
+        <input  id="custom" class="custom" type="number" placeholder="Custom">
+      </div>
+      <div class="nopdiv">
+        <p id="warnings"></p>
+        <p class="sh">Number of People</p>
+      </div>
+      <div class="fullback">
+        <img src="images/icon-person.svg" alt="">
+        <input id="nop" class="fullinput" type="number" placeholder="0">
+      </div>
+    </div>
+    <div class="rightlayout">
+        <div class="set">
+          <h2 class="amt">$<span id="tipamt">0.00</span></h2>
+          <p class="rheader">Tip Amount</p>
+          <p class="person">/ person</p>
+        </div>
+        <div class="set">
+          <h2 class="amt">$<span id="totalamt">0.00</span></h2>
+          <p class="rheader">Total</p>
+          <p class="person">/ person</p>
+        </div>
+      <button onclick="handleReset()" id="id" class="rst">RESET</button>
+    </div>
+  </div>
+</body>
+
+<script>
+  const nop=document.getElementById("nop");
+const bill=document.getElementById("bill");
+const custom=document.getElementById("custom");
+const warnings=document.getElementById("warnings");
+const tipamount=document.getElementById("tipamt");
+const totalamount=document.getElementById("totalamt");
+var billval=0,nopval=0,percent=0;
+function selecttip(n,e){
+    unselectAll();
+    n.style.backgroundColor="hsl(172, 67%, 45%)";
+    n.style.color="hsl(183, 100%, 15%)";
+    percent=e;
+    change();
+};
+custom.addEventListener("input",()=>{
+    unselectAll();
+    percent=custom.value/100;
+    change();
+});
+nop.addEventListener("input",()=>{
+    nopval=nop.value;
+    change();
+})
+bill.addEventListener("input",()=>{
+    billval=bill.value;
+    change();
+});
+function change(){
+    if(nopval<=0 || nopval==""){
+        warnings.innerText="can't be zero";
+        return;
+    }else{
+        warnings.innerText="";
+    }
+    var tipamt=(billval*percent);
+    tipamount.innerText=(tipamt/nopval).toFixed(2);
+    totalamount.innerText=(( +billval+ +tipamt)/nopval).toFixed(2);
+    console.log(nopval,billval,percent,tipamt);
+};
+function unselectAll(){
+    const allButtons =document.getElementsByClassName("percentage");
+    for(let i of allButtons){
+        i.style="";
+    }
+  };
+
+  function handleReset(){
+    location.reload();
+  }
+
+</script>
+</html>
